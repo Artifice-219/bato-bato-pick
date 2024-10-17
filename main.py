@@ -1,5 +1,8 @@
-# *TODO: 0 ( 3/3 )
+# *TODO: 0 ( 4/4 )
 # TODO ENDER: MOVED ON TO THE NEXT PROJECT AS ANYTHING AFTER THIS IS FOR THE NEXT DESIGN ITERATION
+# TODO A1: HAVE A WAY TO CLEAR THE CONSOLE PARA MAS MALINIS TIGNAN
+# TODO A2: ONLY SHOW THE LEGAL MOVES IF THE USER MAKES AN ILLEGAL MOVE
+# TODO A3: AT THE START OF THE GAME PLAYERS LIFE IS ZERO SO DONT RUN DECREMENT
 
 
 choices = ['rock', 'paper', 'scissors']
@@ -54,22 +57,19 @@ def user_choice():
     print(*choices, sep = " ," )
     
     while True:
-            # TODO 11: NORMALIZE THE INPUT HERE
-            choice = str(input("Youre turn, make a choice : "))
+            choice = str(input("Youre turn, make a choice : ")).lower()
             # check if user choice is allowed
             if(choice in choices):
                 return choice
-                #TODO 9 : HAVE A USER PROMPT NA MALING INPUT SYA
+            else:{
+                print(f'{choice}  is not allowed choose another')
+            }
 
 # TODO 13: YOU INITIALIZED A USER AND PLAYER CLASS HERE, RETHINK IF MAY MAS BETTER NA APPROACH
 new_player = Player(0,0)
 new_computer = Computer(0)
 
 def who_wins(user, computer):
-
-    
-    
-    # TODO 10 : FIND A WAY TO BETTER CODE THIS SHIT
     # TODO 16: HAVE A MUCH BETTER WAY TO OUTPUT THAN THIS
     print(f'Youre choice = {user} , Computer choice = {computer} \n')
     
@@ -93,8 +93,8 @@ def who_wins(user, computer):
         
     else:
         # *possible dito ka na mag decrement
-        # TODO 12: DECREMENT USER LIFE EACH TIME THIS CODE RUNS IT MEANS TALO KASI
         print('You lose')
+        new_computer.minus_score()
         new_computer.add_score()
                 
     print(f'Current score player : {new_player.get_score()} computer : {new_computer.get_score()}')
